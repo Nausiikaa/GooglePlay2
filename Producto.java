@@ -5,16 +5,17 @@
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Producto
+public abstract class Producto 
 {
-    // instance variables - replace the example below with your own
+    private String nombre;
     private int numVendido;
 
     /**
      * Constructor for objects of class Productos
      */
-    public Producto()
+    public Producto(String nombre)
     {
+        this.nombre = nombre;
         numVendido = 0;
     }
 
@@ -22,6 +23,19 @@ public class Producto
     {
         return numVendido;
     }
+
+    public String getNombreGlobal()
+    {
+        return nombre;
+    }
     
+    public void aumentarVendidos()
+    {
+        numVendido++;
+    }
+    
+    public abstract double getPrecio();
+    
+        
     
 }

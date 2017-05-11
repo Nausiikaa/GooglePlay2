@@ -23,16 +23,53 @@ public class GooglePlay
     {
         usuariosRegistrados.add(usuarioARegistrar);
     }
+
     public void addProducto(Producto productoARegistrar)
     {
         productosDisponibles.add(productoARegistrar);
     }
+
     public int getNumeroUsuarios()
     {
         return usuariosRegistrados.size();
     }
+
     public int getNumeroProductos()
     {
         return productosDisponibles.size();
+    }
+
+    public double comprar(String idUsuario,String identificadorProducto)
+    {
+        int contador = 0;
+        double devolver = -1;
+        boolean comp = false;
+        Producto producto = null;
+        Usuario usuario = null;
+        while(contador < productosDisponibles.size() && comp == false)
+        {
+            if(productosDisponibles.get(contador).getNombreGlobal().equals(identificadorProducto))
+            {
+               producto = productosDisponibles.get(contador);
+               comp = true;
+            }
+            contador++;
+        }
+        contador = 0;
+        comp = false;
+        while(contador < usuariosRegistrados.size() && comp == false)
+        {
+            if(usuariosRegistrados.get(contador).getNombreCuenta().equals(identificadorProducto))
+            {
+               usuario = usuariosRegistrados.get(contador);
+            }
+            contador++;
+        }
+        if(usuario != null && producto != null)
+        {
+            producto.aumentarVendidos();
+            devolver = producto.getPrecio();
+        }
+        return devolver;
     }
 }

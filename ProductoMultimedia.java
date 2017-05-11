@@ -5,10 +5,9 @@
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class ProductoMultimedia extends Producto
+public abstract class ProductoMultimedia extends Producto
 {
     // instance variables - replace the example below with your own
-    private String titulo;
     private int anoCreacion;
 
     /**
@@ -16,12 +15,12 @@ public class ProductoMultimedia extends Producto
      */
     public ProductoMultimedia(String titulo,int anoCreacion)
     {
-        this.titulo = titulo;
+        super(titulo);
         this.anoCreacion = anoCreacion;
     }
     public String getTitulo()
     {
-        return titulo;
+        return getNombreGlobal();
     }
     public int getAno()
     {

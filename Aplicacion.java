@@ -8,7 +8,6 @@
 public class Aplicacion extends Producto
 {
     // instance variables - replace the example below with your own
-    private String nombreApp;
     private double espacio;
     private Categoria categoria;
 
@@ -17,18 +16,21 @@ public class Aplicacion extends Producto
      */
     public Aplicacion(String nombreApp,double espacioNecesario,Categoria categoria)
     {
-        this.nombreApp = nombreApp;
+        super(nombreApp);
         espacio = espacioNecesario;
         this.categoria = categoria;
     }
+
     public String getNombre()
     {
-        return nombreApp;
+        return getNombreGlobal();
     }
+
     public double getTamanoEnMB()
     {
         return espacio;
     }
+
     public String getCategoria()
     {
         String devolver ="";
@@ -46,6 +48,33 @@ public class Aplicacion extends Producto
             case MULTIMEDIA:
             devolver = "Multimedia";
             break;
+        }
+        return devolver;
+    }
+    
+    public double getPrecio()
+    {
+        double devolver = 0;
+        if(getNumVendido() >= 5){
+            switch(categoria)
+            {
+                case JUEGOS:
+                devolver = 5;
+                break;
+                case COMUNICACIONES:
+                devolver = 2;
+                break;
+                case PRODUCTIVIDAD:
+                devolver = 10;
+                break;
+                case MULTIMEDIA:
+                devolver = 2;
+                break;
+            }
+        }
+        else
+        {
+            devolver = 0.99;
         }
         return devolver;
     }
